@@ -18,7 +18,8 @@ const App = () => {
   }
 
   const removeItem = (itemId) => {
-
+    const newList = items.filter((item) => item.id !== itemId);
+    setItems([...newList])
   }
 
   return <section className="section-center">

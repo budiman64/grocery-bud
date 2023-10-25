@@ -8,10 +8,11 @@ const Form = ({ addItem }) => {
         e.preventDefault();
         try {
             if(!newItemName) {
-                toast.error('please input item')};
-                addItem(newItemName);
-                toast.success('item added');
-                setNewItemName('');
+                toast.error('please input item')
+                return };
+            addItem(newItemName);
+            toast.success('item added');
+            setNewItemName('');
         } catch (error) {
             toast.error(error.message)
         }
