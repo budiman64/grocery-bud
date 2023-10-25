@@ -6,10 +6,16 @@ const Form = ({ addItem }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!newItemName) {
-        toast.error('please input item')};
-        addItem(newItemName);
-        setNewItemName('');
+        try {
+            if(!newItemName) {
+                toast.error('please input item')};
+                addItem(newItemName);
+                toast.success('item added');
+                setNewItemName('');
+        } catch (error) {
+            toast.error(error.message)
+        }
+        
     };
 
   return (   
