@@ -28,6 +28,7 @@ const App = () => {
     const newList = items.filter((item) => item.id !== itemId);
     setItems(newList)
     setLocalStorage(newList);
+    toast.success('item removed');
   }
 
   const editItem = (itemId) => {
