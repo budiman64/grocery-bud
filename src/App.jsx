@@ -26,14 +26,26 @@ const App = () => {
 
   const removeItem = (itemId) => {
     const newList = items.filter((item) => item.id !== itemId);
-    setItems([...newList])
+    setItems(newList)
+    setLocalStorage(newList);
+  }
+
+  const editItem = (itemId) => {
+    const newList = items.map((item) => {
+      if(item.id === itemId) {
+        const newItem = {...item, completed: !item.completed}
+      return newItem 
+    } 
+      return item
+    })
+    setItems(newList)
     setLocalStorage(newList);
   }
 
   return <section className="section-center">
     <ToastContainer position='top-center'/>
     <Form addItem={addItem} />
-    <Items items={items} removeItem={removeItem} />
+    <Items items={items} removeItem={removeItem} editItem={editItem} />
     </section>;
 };
 
