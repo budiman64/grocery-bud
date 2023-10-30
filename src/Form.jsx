@@ -1,32 +1,41 @@
 import React, { useState } from 'react'
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 
 const Form = ({ addItem }) => {
-    const [newItemName, setNewItemName] = useState('');
+  const [newItemName, setNewItemName] = useState('')
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        try {
-            if(!newItemName) {
-                toast.error('please input item')
-                return };
-            addItem(newItemName);
-            toast.success('item added');
-            setNewItemName('');
-        } catch (error) {
-            toast.error(error.message)
-        }
-        
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    try {
+      if (!newItemName) {
+        toast.error('please input item')
+        return
+      }
+      addItem(newItemName)
+      toast.success('item added')
+      setNewItemName('')
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
 
-  return (   
-        <form onSubmit={handleSubmit}>
-            <h4>grocery bud</h4>
-            <div className="form-control">
-                <input type="text" className="form-input" value={newItemName} onChange={(e) => {setNewItemName(e.target.value)}}/>
-                <button className="btn" type="submit">add item</button>
-            </div>   
-        </form>    
+  return (
+    <form onSubmit={handleSubmit}>
+      <h4>grocery bud</h4>
+      <div className='form-control'>
+        <input
+          type='text'
+          className='form-input'
+          value={newItemName}
+          onChange={(e) => {
+            setNewItemName(e.target.value)
+          }}
+        />
+        <button className='btn' type='submit'>
+          add item
+        </button>
+      </div>
+    </form>
   )
 }
 
